@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  
+  <title>LottoTrivo | Resultados e Probabilidades</title>
+  <meta name="description" content="LottoTrivo - Resultados ao vivo, probabilidades e apostas online com Pix instantâneo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.lottotrivo.net/" />
+
+  <meta property="og:title" content="LottoTrivo | Resultados e Probabilidades">
+  <meta property="og:description" content="Resultados ao vivo + Analyzer de probabilidades.">
+  <meta property="og:url" content="https://www.lottotrivo.net/">
+  <meta property="og:image" content="https://lottotrivo.com/logo/logo.png">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="https://lottotrivo.com/logo/logo.png" type="image/png">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      background: #0a0a0a;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #fff;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+    .iframe-container {
+      flex: 1;
+      width: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 16px;
+      background: linear-gradient(180deg, #111 0%, #000 100%);
+      border-top: 1px solid #222;
+      z-index: 100;
+    }
+    #btn-probabilidades {
+      background: linear-gradient(135deg, #3b82f6, #2563eb, #1d4ed8);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      height: 52px;
+      padding: 0 36px;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 0 24px rgba(59, 130, 246, 0.55);
+      transition: all 0.25s ease;
+      animation: pulseBlue 2s infinite;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #btn-probabilidades:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 35px rgba(59, 130, 246, 0.8);
+    }
+    @keyframes pulseBlue {
+      0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.6); }
+      70% { box-shadow: 0 0 0 16px rgba(59, 130, 246, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+
+    /* Overlay do Analyzer */
+    #analyzer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #080c12;
+      z-index: 999999;
+    }
+    #analyzer-overlay.open {
+      display: block;
+    }
+    #analyzer-close {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 1000000;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #analyzer-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    @media (max-width: 500px) {
+      #btn-probabilidades {
+        font-size: 15px;
+        height: 48px;
+        padding: 0 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="iframe-container">
+      <iframe 
+        allow="clipboard-read; clipboard-write" 
+        id="embeddedIframe" 
+        loading="lazy" 
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms" 
+        src="https://lottotrivo.com" 
+        title="LottoTrivo">
+      </iframe>
+    </div>
+
+    <div class="bottom-bar">
+      <button id="btn-probabilidades">
+        📊 PROBABILIDADES
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay do Analyzer -->
+  <div id="analyzer-overlay">
+    <button id="analyzer-close" title="Fechar">×</button>
+    <iframe id="analyzer-frame" src="about:blank"></iframe>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn-probabilidades');
+    const overlay = document.getElementById('analyzer-overlay');
+    const frame = document.getElementById('analyzer-frame');
+    const btnClose = document.getElementById('analyzer-close');
+
+    // Abre o Analyzer
+    btn.addEventListener('click', function () {
+      // Carrega o arquivo analyzer.html
+      frame.src = 'analyzer.html';
+      overlay.classList.add('open');
+    });
+
+    // Fecha o Analyzer
+    btnClose.addEventListener('click', function () {
+      overlay.classList.remove('open');
+      frame.src = 'about:blank';
+    });
+
+    // Fecha com tecla ESC
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) {
+        btnClose.click();
+      }
+    });
+  </script>
+</body>
+</html>
