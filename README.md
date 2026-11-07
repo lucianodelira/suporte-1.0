@@ -1,62 +1,42 @@
-# 🤖 Suporte Inteligente - Chat de Atendimento
+# Suporte Inteligente — Já Deu Certo
 
-Página de suporte automático profissional estilo IA para as principais bancas e aplicativos:
+Chat de suporte automático para bancas (Acertos Club, Feiticeira, Super Acertos, Banca Brasileira, SuperBancas, Tiger Club).
 
-- **Acertos Club**
-- **Feiticeira Club**
-- **Super Acertos**
-- **Banca Brasileira**
-- **SuperBancas**
-- **Tiger Club**
+**Domínio:** https://www.jadeucerto.net
 
-## ✨ Funcionalidades
+## Arquivos
 
-- Interface moderna e responsiva (mobile-first)
-- Chat interativo com respostas instantâneas
-- Base de conhecimento salva (rápida e offline)
-- Seleção visual de plataforma
-- Tópicos rápidos (Bônus, Cotação, Depósito, Saque, Jogos, Problemas, Suporte)
-- Detecção inteligente de intenção
-- Design profissional dark mode
+- `index.html` — aplicação completa do chat
+- `ads.txt` — autorização AdSense (obrigatório na raiz do domínio)
 
-## 🚀 Como usar
+## Publicar no domínio
 
-### Opção 1 - GitHub Pages (recomendado)
+1. Faça upload de **todos** os arquivos para a **raiz** do site (ou pasta pública do hosting).
+2. Confirme que o `ads.txt` fica acessível em:
+   ```
+   https://www.jadeucerto.net/ads.txt
+   ```
+3. No Google AdSense, adicione o site `jadeucerto.net` / `www.jadeucerto.net` e aguarde aprovação.
 
-1. Crie um repositório no GitHub
-2. Faça upload da pasta `suporte-chat` (ou só o `index.html`)
-3. Vá em **Settings → Pages**
-4. Selecione a branch `main` e a pasta `/` (root)
-5. Seu chat estará online em: `https://seu-usuario.github.io/nome-do-repo`
+## AdSense já configurado
 
-### Opção 2 - Abrir localmente
+- Publisher: `ca-pub-5066020163837493`
+- Meta tag + script no `<head>`
+- Anúncio exibido na **fila de atendimento** (quando o cliente clica em “Chamar Atendente”)
 
-Basta abrir o arquivo `index.html` no navegador.
+### Melhorar o anúncio (opcional)
 
-## 📁 Estrutura
+1. No painel AdSense → Anúncios → Por unidade de anúncio → criar um bloco **Display**.
+2. Copie o `data-ad-slot` (número) gerado.
+3. No `index.html`, na função `getAdSenseHTML()`, troque:
+   ```html
+   data-ad-slot="auto"
+   ```
+   pelo número do seu bloco, por exemplo:
+   ```html
+   data-ad-slot="1234567890"
+   ```
 
-```
-suporte-chat/
-├── index.html      # Página completa (HTML + CSS + JS)
-└── README.md
-```
+## GitHub Pages (alternativa)
 
-## 🛠️ Personalização
-
-A base de conhecimento fica dentro do arquivo `index.html`, no objeto `knowledgeBase`.
-
-Você pode:
-
-- Atualizar textos de bônus, cotação, etc.
-- Adicionar novas plataformas
-- Alterar cores no `:root` do CSS
-
-## 📌 Observações
-
-- Todas as informações foram organizadas com base em dados públicos disponíveis.
-- O chat é 100% frontend (não precisa de servidor ou backend).
-- Ideal para embutir em sites ou usar como página de suporte independente.
-
----
-
-Feito para atendimento rápido e profissional.
+Se usar GitHub Pages, o site precisa ser o domínio customizado `www.jadeucerto.net` apontando para o repositório, e o `ads.txt` deve estar na raiz do repositório publicado.

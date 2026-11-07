@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="google-adsense-account" content="ca-pub-5066020163837493">
-  <title>Suporte Inteligente | Bancas & Apps</title>
+  <title>Suporte Inteligente | Já Deu Certo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -97,8 +97,8 @@
     .queue-timer { font-size: 28px; font-weight: 700; color: var(--text); letter-spacing: 2px; margin: 10px 0; font-variant-numeric: tabular-nums; }
     .queue-info { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4; }
     .queue-warning { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); color: #fbbf24; padding: 10px 12px; border-radius: 10px; font-size: 12.5px; margin-bottom: 12px; line-height: 1.45; }
-    .adsense-slot { background: var(--surface); border: 1px dashed var(--border); border-radius: 10px; padding: 12px; margin: 12px 0; min-height: 90px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .adsense-slot .ad-label { font-size: 11px; color: var(--text-muted); text-align: center; }
+    .adsense-slot { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px; margin: 12px 0; min-height: 100px; display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; }
+    .adsense-slot ins { width: 100% !important; }
 
     .input-area { flex-shrink: 0; background: var(--surface); border-top: 1px solid var(--border); padding: 12px 14px; display: flex; gap: 10px; align-items: flex-end; min-height: var(--input-h); }
     .input-wrapper { flex: 1; background: var(--surface-2); border: 1px solid var(--border); border-radius: 22px; padding: 10px 14px; display: flex; align-items: center; min-height: 44px; }
@@ -152,7 +152,7 @@
 
     const BONUS_PADRAO = `**Bônus de recarga:**
 • Até **25%** para cliente novo (primeira recarga)
-• Até**15%** em dias de Loteria Federal
+• **15%** em dias de Loteria Federal
 • **10%** todos os dias normais
 O bônus vale apenas nas **primeiras recargas do dia**. Após a primeira recarga do dia, as seguintes não recebem bônus.`;
 
@@ -281,7 +281,7 @@ Você **não precisa** refazer a aposta. Basta acompanhar o próximo resultado o
 **Importante:** se o resultado da loteria não ocorrer no dia, a **pule fica valendo para o sorteio do outro dia**.`,
           bingo: BINGO_INFO,
           pule: PULE_VALIDADE,
-          cassino: CASSINO_INFO + `\n\n**Link oficial do Acertos Club:**\nhttps://app.acertos.club`,
+          cassino: CASSINO_INFO + `\n\n**Link oficial do Acertos Club:**\nhttps://app.acertos.club/pr/sbrqjugZ`,
           tutorial: TUTORIAL_LOTERIAS,
           excluir: EXCLUIR_CONTA,
           suporte: `Suporte oficial do Acertos Club:
@@ -362,7 +362,7 @@ Você **não precisa** refazer a aposta. Basta acompanhar o próximo resultado o
           jogos: `**Loterias**, **Bingo** e cassino. Suporte deste chat: **Loterias e Bingo**.\n\nSe o resultado da loteria não ocorrer, a **pule vale para o sorteio do dia seguinte**.`,
           bingo: BINGO_INFO,
           pule: PULE_VALIDADE,
-          cassino: CASSINO_INFO + `\n\n**Link de suporte:** https://suporte.bancabrasileira.com`,
+          cassino: CASSINO_INFO + `\n\n**Link oficial:** https://app.bancabrasileira.com.br/pr/J2AWPe67`,
           tutorial: TUTORIAL_LOTERIAS,
           excluir: EXCLUIR_CONTA,
           suporte: `Suporte da Banca Brasileira focado em Loterias e Bingo. Cassino tem atendimento limitado.`,
@@ -386,7 +386,7 @@ Você **não precisa** refazer a aposta. Basta acompanhar o próximo resultado o
           jogos: `Hub de bancas com **Loterias**, **Bingo** e cassino. Suporte deste chat: **Loterias e Bingo**.\n\nSe o resultado não ocorrer, a **pule fica valendo para o sorteio do outro dia**.`,
           bingo: BINGO_INFO,
           pule: PULE_VALIDADE,
-          cassino: CASSINO_INFO + `\n\n**Site oficial:** https://www.superbancas.org/`,
+          cassino: CASSINO_INFO + `\n\n**Site oficial:** https://app.superbancas.club/pr/Q3WZ1haO`,
           tutorial: TUTORIAL_LOTERIAS,
           excluir: EXCLUIR_CONTA,
           suporte: `Suporte geral da SuperBancas (Loterias e Bingo). Cassino: suporte limitado.`,
@@ -526,8 +526,26 @@ Você **não precisa** refazer a aposta. Basta acompanhar o próximo resultado o
       const s = seconds % 60;
       return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
     }
+
+    // AdSense — publisher ca-pub-5066020163837493
+    // Para anúncio de unidade específica: crie um bloco no AdSense e coloque o data-ad-slot abaixo.
+    // Enquanto isso, usamos formato auto + full-width-responsive.
     function getAdSenseHTML() {
-      return `<div class="adsense-slot"><ins class="adsbygoogle" style="display:block;width:100%;min-height:90px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><div class="ad-label">Anúncio</div></div>`;
+      return `
+        <div class="adsense-slot">
+          <ins class="adsbygoogle"
+               style="display:block; width:100%; min-height:100px;"
+               data-ad-client="ca-pub-5066020163837493"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+        </div>`;
+    }
+
+    function pushAds() {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {}
     }
 
     function startAttendantQueue() {
@@ -535,7 +553,7 @@ Você **não precisa** refazer a aposta. Basta acompanhar o próximo resultado o
       const maxSec = 30 * 60;
       queueSecondsLeft = Math.floor(Math.random() * (maxSec - minSec + 1)) + minSec;
       const p = knowledgeBase[currentPlatform];
-      const link = (p && p.suporteLink) ? p.suporteLink : 'https://suporte.bancabrasileira.com';
+      const link = (p && p.suporteLink) ? p.suporteLink : 'https://www.jadeucerto.net';
 
       const queueHTML = `
         <div class="queue-box" id="queueBox">
@@ -548,7 +566,7 @@ Você **não precisa** refazer a aposta. Basta acompanhar o próximo resultado o
         </div>`;
 
       createMessage(`Você foi colocado na **fila de atendimento humano**.\n\nPor favor, **não saia deste chat** enquanto aguarda.`, true, queueHTML);
-      setTimeout(() => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {} }, 400);
+      setTimeout(pushAds, 500);
 
       if (queueTimerInterval) clearInterval(queueTimerInterval);
       queueTimerInterval = setInterval(() => {
@@ -585,7 +603,6 @@ Você **não precisa** refazer a aposta. Basta acompanhar o próximo resultado o
 
     function detectIntent(text) {
       const n = normalize(text);
-
       if (/saque.*recus|recus.*saque|saque.*negad|negad.*saque|saque.*rejeit|rejeit.*saque|nao.*consegui.*sacar|saque.*nao.*foi|problema.*saque/.test(n)) return 'saque_recusado';
       if (/bingo|cartela/.test(n)) return 'bingo';
       if (/pule|resultado.*nao.*(saiu|ocorreu|teve)|sorteio.*nao.*(saiu|ocorreu)|nao.*teve.*resultado|pule.*valida|pule.*vale/.test(n)) return 'pule';
